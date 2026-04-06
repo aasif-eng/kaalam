@@ -25,21 +25,21 @@ export class TransactionsService {
    */
   async purchase(dto: CreateTransactionDto): Promise<Transaction> {
     // Validate that the level actually exists in our static catalogue
-    const level = findLevelById(dto.level_id);
-    if (!level) {
-      throw new BadRequestException(
-        `Level "${dto.level_id}" does not exist. ` +
-          `Valid levels: LVL_001 – LVL_005`,
-      );
-    }
+    // const level = findLevelById(dto.level_id);
+    // if (!level) {
+    //   throw new BadRequestException(
+    //     `Level "${dto.level_id}" does not exist. ` +
+    //       `Valid levels: LVL_001 – LVL_005`,
+    //   );
+    // }
 
-    // Optionally validate amount matches the catalogue price (within 1 cent tolerance)
-    const diff = Math.abs(dto.amount - level.price);
-    if (diff > 0.01) {
-      throw new BadRequestException(
-        `Amount mismatch. Expected ${level.price} for level "${level.name}", got ${dto.amount}.`,
-      );
-    }
+    // // Optionally validate amount matches the catalogue price (within 1 cent tolerance)
+    // const diff = Math.abs(dto.amount - level.price);
+    // if (diff > 0.01) {
+    //   throw new BadRequestException(
+    //     `Amount mismatch. Expected ${level.price} for level "${level.name}", got ${dto.amount}.`,
+    //   );
+    // }
 
     const transaction: Transaction = {
       transaction_id: uuidv4(),
