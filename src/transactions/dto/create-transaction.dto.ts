@@ -13,11 +13,8 @@ export class CreateTransactionDto {
   device_id!: string;
 
   @IsString()
-  @IsNotEmpty()
-  @MaxLength(50)
   level_id!: string;
 
-  @IsNumber({ maxDecimalPlaces: 2 })
   @IsPositive()
   amount!: number;
 
