@@ -29,6 +29,12 @@ export class Transaction {
   @Column({ type: 'timestamptz' })
   purchased_at!: Date;
 
+  @Column({ type: 'timestamptz', nullable: true })
+  expires_at?: Date;
+
+  @Column({ type: 'boolean', default: true, nullable: true })
+  isActive?: boolean;
+
   @CreateDateColumn({ type: 'timestamptz' })
   created_at!: Date;
 }

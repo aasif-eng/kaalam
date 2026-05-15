@@ -1,11 +1,10 @@
 // src/transactions/dto/create-transaction.dto.ts
 
 import {
+  IsISO8601,
   IsNotEmpty,
-  IsNumber,
   IsPositive,
   IsString,
-  MaxLength,
 } from 'class-validator';
 
 export class CreateTransactionDto {
@@ -18,6 +17,6 @@ export class CreateTransactionDto {
   @IsPositive()
   amount!: number;
 
-  @IsNotEmpty()
+  @IsISO8601()
   purchased_at!: string;
 }
